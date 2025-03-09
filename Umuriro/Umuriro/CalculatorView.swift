@@ -9,7 +9,7 @@ import SwiftUI
 
 enum Constants {
 #if os(watchOS)
-    static let gridItemSpacing: CGFloat = 4
+    static let gridItemSpacing: CGFloat = 3
 #else
     static let gridItemSpacing: CGFloat = 16
 #endif
@@ -201,6 +201,9 @@ struct CalculatorView: View {
         .buttonStyle(.plain)
     }
 
+    var sbody: some View {
+        Color.green
+    }
     var body: some View {
         VStack {
             if !isWatchOS {
@@ -216,8 +219,8 @@ struct CalculatorView: View {
                     if !isWatchOS || !showResult {
                         HStack(alignment: .center) {
                             Text(conversion.rwf, format: .number)
-                                .font(.system(size: isWatchOS ? 30 : 60, weight: .bold))
-                                .minimumScaleFactor(0.5)
+                                .font(.system(size: isWatchOS ? 26 : 60, weight: .bold))
+                                .minimumScaleFactor(0.2)
                                 .foregroundStyle(conversion.type == .rwfToKWh ? .primary : .secondary)
 
 
@@ -248,8 +251,8 @@ struct CalculatorView: View {
                                     Text(conversion.kWhInputString.last == "." ? "." : "")
                                 }
                             }
-                            .font(.system(size: 60, weight: .bold))
-                            .minimumScaleFactor(0.5)
+                            .font(.system(size: isWatchOS ? 26 : 60, weight: .bold))
+                            .minimumScaleFactor(0.2)
                             .foregroundStyle((isWatchOS || conversion.type == .kWhToRwf) ? .primary : .secondary)
 
                             UnitLabel("Kwh")
@@ -267,11 +270,13 @@ struct CalculatorView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
 #if os(watchOS)
-            .frame(maxHeight: 40, alignment: .bottom)
+            .frame(maxHeight: 30, alignment: .bottom)
 #endif
 
             GeometryReader { geometry in
+#if !os(watchOS)
                 let availHeight = geometry.size.height - (3 * Constants.gridItemSpacing)
+                #endif
                 LazyVGrid(
                     columns: columns,
                     spacing: Constants.gridItemSpacing
@@ -292,11 +297,11 @@ struct CalculatorView: View {
                                     .labelStyle(.iconOnly)
                                     .font(
                                         .system(
-                                            size: isWatchOS ? 18 : 40,
+                                            size: isWatchOS ? 14 : 40,
                                             weight: .medium
                                         )
                                     )
-                                    .minimumScaleFactor(0.4)
+                                    .minimumScaleFactor(0.6)
                                     .padding(4)
                                     .frame(maxWidth: .infinity)
 #if !os(watchOS)
@@ -330,23 +335,24 @@ struct CalculatorView: View {
                                 Text((isWatchOS && digit == ".") ? "=" : digit)
                                     .font(
                                         .system(
-                                            size: isWatchOS ? 14 : 40,
+                                            size: isWatchOS ? 12 : 40,
                                             weight: .heavy
                                         )
                                     )
-                                    .minimumScaleFactor(0.8)
+                                    .minimumScaleFactor(0.6)
                                     .padding(4)
                                     .frame(maxWidth: .infinity)
-#if !os(watchOS)
-                                    .frame(height: availHeight / 4)
-                                    .background(.black.opacity(0.85))
-                                    .background(.regularMaterial)
-                                    .clipShape(.circle)
-#else
+#if os(watchOS)
                                     .background(
                                         digit == "." ? Color.accentColor : Color .gray.opacity(0.3)
                                     )
                                     .clipShape(.capsule)
+
+#else
+                                    .frame(height: availHeight / 4)
+                                    .background(.black.opacity(0.85))
+                                    .background(.regularMaterial)
+                                    .clipShape(.circle)
 #endif
                             }
                             .buttonStyle(.plain)
@@ -355,7 +361,7 @@ struct CalculatorView: View {
                 }
             }
         }
-        .padding()
+        .padding([.horizontal, .bottom] , isWatchOS ? 2 : 12)
         .frame(maxWidth: .infinity)
         .background(.black)
         .foregroundStyle(.white)
@@ -374,7 +380,11 @@ struct UnitLabel: View {
     }
     var body: some View {
         Text(text)
+#if os(watchOS)
+            .font(.headline.weight(.medium))
+#else
             .font(.title3.weight(.medium))
+#endif
             .foregroundStyle(.gray)
     }
 }
