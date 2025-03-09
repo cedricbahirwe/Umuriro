@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum Constants {
+    static let gridItemSpacing: CGFloat = 16
+    static let deleteButton = "X"
+    static let conversionRate: Double = 294.117647059
+}
 
 enum ConversionType {
     case rwfToKWh
@@ -16,11 +21,26 @@ enum ConversionType {
 struct Conversion {
     private(set) var rwf: Int = 0
     private(set) var kWh: Double = 0
-    private let conversionRate: Double = 294.117647059
     private var shouldClearInputOnNextDigit: Bool = false
-    var type: ConversionType = .kWhToRwf
-    
-    mutating func switchType() {
+
+    var type: ConversionType = .rwfToKWh
+    var kWhInputString: String = "0"
+
+    mutating func setType(_ newType: ConversionType) {
+        guard type != newType else { return }
+        switchType(shouldSwitchValues: false)
+        return
+    }
+
+    mutating func switchType(shouldSwitchValues: Bool = true) {
+        if shouldSwitchValues {
+            switchValues()
+        }
+        type = (type == .rwfToKWh) ? .kWhToRwf : .rwfToKWh
+        shouldClearInputOnNextDigit = true
+    }
+
+    mutating func switchValues() {
         switch type {
         case .rwfToKWh:
             // When switching from RWF→kWh to kWh→RWF
@@ -36,29 +56,28 @@ struct Conversion {
                     kWhInputString.removeLast()
                 }
             }
-            
+
             rwf = calculateKWhToRWF()
         case .kWhToRwf:
             // When switching from kWh→RWF to RWF→kWh
             // Set current kWh to rwf as the new input base
             rwf = Int(kWh)
-            
+
             kWh = calculateRWFToKWh()
             kWhInputString = String(kWh)
         }
-        type = (type == .rwfToKWh) ? .kWhToRwf : .rwfToKWh
-        shouldClearInputOnNextDigit = true
     }
-    var kWhInputString: String = "0"
-    
+
+
     mutating func addInput(_ digit: String) {
         if shouldClearInputOnNextDigit {
             clearInput()
             shouldClearInputOnNextDigit = false
         }
-        
+
         switch type {
         case .rwfToKWh:
+            guard digit != "." else { return }
             let newRwfString = String(rwf).appending(digit)
             rwf = Int(newRwfString) ?? 0
             kWh = calculateRWFToKWh()
@@ -74,17 +93,18 @@ struct Conversion {
                     kWhInputString = kWhInputString.appending(digit)
                 }
             }
-            
+
             kWh = Double(kWhInputString) ?? 0
             rwf = calculateKWhToRWF()
         }
     }
-    
+
     mutating func clearInput() {
         rwf = 0
         kWh = 0
+        shouldClearInputOnNextDigit = false
     }
-    
+
     mutating func removeLastInput() {
         switch type {
         case .rwfToKWh:
@@ -93,7 +113,7 @@ struct Conversion {
             rwfString.removeLast()
             rwf = Int(rwfString) ?? 0
             kWh = calculateRWFToKWh()
-            
+
             // Update kWhInputString to match the new kWh value
             kWhInputString = String(kWh)
         case .kWhToRwf:
@@ -103,37 +123,27 @@ struct Conversion {
                 rwf = 0
                 return
             }
-            
+
             kWhInputString.removeLast()
-            
+
             // If we deleted everything or just a decimal point remains, reset to zero
             if kWhInputString.isEmpty || kWhInputString == "." {
                 kWhInputString = "0"
             }
-            
+
             kWh = Double(kWhInputString) ?? 0
             rwf = calculateKWhToRWF()
-            
-            //            guard kWh != 0 else { return }
-            //            var kWhString = String(format: "%.2f", kWh)
-            //            // Handle removal properly with decimal values
-            //            kWhString.removeLast()
-            //            if kWhString.hasSuffix(".") {
-            //                kWhString.removeLast()
-            //            }
-            //            kWh = Double(kWhString) ?? 0
-            //            rwf = calculateKWhToRWF()
         }
     }
-    
+
     func calculateRWFToKWh() -> Double {
-        return Double(rwf) / conversionRate
+        return Double(rwf) / Constants.conversionRate
     }
-    
+
     func calculateKWhToRWF() -> Int {
-        return Int(kWh * conversionRate)
+        return Int(kWh * Constants.conversionRate)
     }
-    
+
     // Helper method to get the current primary value as a string
     func currentInputString() -> String {
         switch type {
@@ -152,12 +162,7 @@ struct CalculatorView: View {
         "1", "2", "3",
         Constants.deleteButton, "0",  "."
     ]
-    
-    enum Constants {
-        static let gridItemSpacing: CGFloat = 16
-        static let deleteButton = "X"
-        
-    }
+
     let columns: [GridItem] = Array(
         repeating: GridItem(
             .flexible(),
@@ -165,9 +170,20 @@ struct CalculatorView: View {
         ),
         count: 3
     )
-    
+
     var body: some View {
         VStack {
+            Text("1 RWF = \((1/Constants.conversionRate).formatted(.number.precision(.fractionLength(...6)))) Kwh")
+                .fontWeight(.semibold)
+                .foregroundStyle(.accent)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.accentColor.quinary)
+                .clipShape(.rect(cornerRadius: 6))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+//            Spacer()
+
             HStack {
                 Button {
                     conversion.switchType()
@@ -177,31 +193,32 @@ struct CalculatorView: View {
                         .font(.system(size: 24, weight: .bold))
                         .foregroundStyle(.accent)
                 }
-                
+
                 VStack(alignment: .trailing) {
                     HStack(alignment: .center) {
                         Text(conversion.rwf, format: .number)
                             .font(.system(size: 60, weight: .bold))
                             .minimumScaleFactor(0.5)
                             .foregroundStyle(conversion.type == .rwfToKWh ? .primary : .secondary)
-                        
-                        
+
+
                         UnitLabel("RWF")
-                        
-                        
                     }
                     .frame(height: 100)
-                    
+                    .onTapGesture {
+                        conversion.setType(.rwfToKWh)
+                    }
+
                     Color.gray
                         .frame(height: 1)
-                    
+
                     HStack(alignment: .center) {
                         Group {
                             Text(
                                 conversion.kWh,
                                 format: .number
                             )
-                            
+
                             if let lastDot = conversion.kWhInputString.last, lastDot == "." {
                                 Text(conversion.kWhInputString.last == "." ? "." : "")
                             }
@@ -209,67 +226,66 @@ struct CalculatorView: View {
                         .font(.system(size: 60, weight: .bold))
                         .minimumScaleFactor(0.5)
                         .foregroundStyle(conversion.type == .rwfToKWh ? .secondary : .primary)
-                        
+
                         UnitLabel("Kwh")
                     }
                     .frame(height: 100)
-                    
+                    .onTapGesture {
+                        conversion.setType(.kWhToRwf)
+                    }
+
                 }
                 .lineLimit(1)
-                
             }
-            
-            .padding(.horizontal)
-            
-            LazyVGrid(
-                columns: columns,
-                spacing: Constants.gridItemSpacing
-            ) {
-                ForEach(digitsPad, id: \.self) { digit in
-                    if digit.isEmpty {
-                        Text("")
-                    } else if digit == Constants.deleteButton {
-                        Button {
-                            conversion.removeLastInput()
-                        } label: {
-                            Label("Delete last digit", systemImage: "delete.backward")
-                                .labelStyle(.iconOnly)
-                                .font(.system(size: 40, weight: .medium))
-                                .padding()
-                                .frame(
-                                    maxWidth: .infinity,
-                                    maxHeight: .infinity
-                                )
-                                .background(.black.opacity(0.8))
-                                .background(.regularMaterial)
-                                .clipShape(.circle)
-                                .aspectRatio(1, contentMode: .fill)
-                        }
-                        
-                    } else {
-                        Button {
-                            conversion.addInput(digit)
-                        } label: {
-                            Text(digit)
-                                .font(.system(size: 40, weight: .heavy))
-                                .padding()
-                                .frame(
-                                    maxWidth: .infinity,
-                                    maxHeight: .infinity
-                                )
-                                .background(.black.opacity(0.8))
-                                .background(.regularMaterial)
-                                .clipShape(.circle)
-                                .aspectRatio(1, contentMode: .fill)
+
+            GeometryReader { geometry in
+                let availHeight = geometry.size.height - (3 * Constants.gridItemSpacing)
+                LazyVGrid(
+                    columns: columns,
+                    spacing: Constants.gridItemSpacing
+                ) {
+                    ForEach(digitsPad, id: \.self) { digit in
+                        if digit.isEmpty {
+                            Text("")
+                        } else if digit == Constants.deleteButton {
+                            Button {
+                                conversion.removeLastInput()
+                            } label: {
+                                Label("Delete last digit", systemImage: "delete.backward")
+                                    .labelStyle(.iconOnly)
+                                    .font(.system(size: 40, weight: .medium))
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: availHeight / 4)
+                                    .background(.black.opacity(0.85))
+                                    .background(.regularMaterial)
+                                    .clipShape(.circle)
+                            }
+
+                        } else {
+                            Button {
+                                conversion.addInput(digit)
+                            } label: {
+                                Text(digit)
+                                    .font(.system(size: 40, weight: .heavy))
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: availHeight / 4)
+                                    .background(.black.opacity(0.85))
+                                    .background(.regularMaterial)
+                                    .clipShape(.circle)
+
+                            }
                         }
                     }
                 }
             }
-            .padding()
         }
+        .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.black)
         .foregroundStyle(.white)
+
     }
 }
 
