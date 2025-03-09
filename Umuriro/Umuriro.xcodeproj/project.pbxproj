@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CB6F09B22D7DEBD500485F51 /* Wumuriro Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CB5FB7A82D7D15150056333F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +25,69 @@
 			remoteGlobalIDString = CB5FB7942D7D15140056333F;
 			remoteInfo = Umuriro;
 		};
+		CB6F099F2D7DEBD500485F51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB5FB78D2D7D15140056333F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6F098E2D7DEBD400485F51;
+			remoteInfo = "Wumuriro Watch App";
+		};
+		CB6F09A92D7DEBD500485F51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB5FB78D2D7D15140056333F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6F098E2D7DEBD400485F51;
+			remoteInfo = "Wumuriro Watch App";
+		};
+		CB6F09B02D7DEBD500485F51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB5FB78D2D7D15140056333F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6F098E2D7DEBD400485F51;
+			remoteInfo = "Wumuriro Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CB6F09B32D7DEBD500485F51 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CB6F09B22D7DEBD500485F51 /* Wumuriro Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CB5FB7952D7D15140056333F /* Umuriro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umuriro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5FB7A72D7D15150056333F /* UmuriroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmuriroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5FB7B12D7D15150056333F /* UmuriroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmuriroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wumuriro Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6F099E2D7DEBD500485F51 /* Wumuriro Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wumuriro Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6F09A82D7DEBD500485F51 /* Wumuriro Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wumuriro Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CB6F09BE2D7E314E00485F51 /* Exceptions for "Umuriro" folder in "Wumuriro Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				CalculatorView.swift,
+			);
+			target = CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CB5FB7972D7D15140056333F /* Umuriro */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CB6F09BE2D7E314E00485F51 /* Exceptions for "Umuriro" folder in "Wumuriro Watch App" target */,
+			);
 			path = Umuriro;
 			sourceTree = "<group>";
 		};
@@ -43,6 +99,21 @@
 		CB5FB7B42D7D15150056333F /* UmuriroUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = UmuriroUITests;
+			sourceTree = "<group>";
+		};
+		CB6F09902D7DEBD400485F51 /* Wumuriro Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Wumuriro Watch App";
+			sourceTree = "<group>";
+		};
+		CB6F09A12D7DEBD500485F51 /* Wumuriro Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Wumuriro Watch AppTests";
+			sourceTree = "<group>";
+		};
+		CB6F09AB2D7DEBD500485F51 /* Wumuriro Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Wumuriro Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +140,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB6F098C2D7DEBD400485F51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F099B2D7DEBD500485F51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F09A52D7DEBD500485F51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +170,9 @@
 				CB5FB7972D7D15140056333F /* Umuriro */,
 				CB5FB7AA2D7D15150056333F /* UmuriroTests */,
 				CB5FB7B42D7D15150056333F /* UmuriroUITests */,
+				CB6F09902D7DEBD400485F51 /* Wumuriro Watch App */,
+				CB6F09A12D7DEBD500485F51 /* Wumuriro Watch AppTests */,
+				CB6F09AB2D7DEBD500485F51 /* Wumuriro Watch AppUITests */,
 				CB5FB7962D7D15140056333F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +183,9 @@
 				CB5FB7952D7D15140056333F /* Umuriro.app */,
 				CB5FB7A72D7D15150056333F /* UmuriroTests.xctest */,
 				CB5FB7B12D7D15150056333F /* UmuriroUITests.xctest */,
+				CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */,
+				CB6F099E2D7DEBD500485F51 /* Wumuriro Watch AppTests.xctest */,
+				CB6F09A82D7DEBD500485F51 /* Wumuriro Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,10 +200,12 @@
 				CB5FB7912D7D15140056333F /* Sources */,
 				CB5FB7922D7D15140056333F /* Frameworks */,
 				CB5FB7932D7D15140056333F /* Resources */,
+				CB6F09B32D7DEBD500485F51 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CB6F09B12D7DEBD500485F51 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CB5FB7972D7D15140056333F /* Umuriro */,
@@ -163,6 +263,74 @@
 			productReference = CB5FB7B12D7D15150056333F /* UmuriroUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6F09BA2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch App" */;
+			buildPhases = (
+				CB6F098B2D7DEBD400485F51 /* Sources */,
+				CB6F098C2D7DEBD400485F51 /* Frameworks */,
+				CB6F098D2D7DEBD400485F51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CB6F09902D7DEBD400485F51 /* Wumuriro Watch App */,
+			);
+			name = "Wumuriro Watch App";
+			packageProductDependencies = (
+			);
+			productName = "Wumuriro Watch App";
+			productReference = CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB6F099D2D7DEBD500485F51 /* Wumuriro Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6F09BB2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch AppTests" */;
+			buildPhases = (
+				CB6F099A2D7DEBD500485F51 /* Sources */,
+				CB6F099B2D7DEBD500485F51 /* Frameworks */,
+				CB6F099C2D7DEBD500485F51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB6F09A02D7DEBD500485F51 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB6F09A12D7DEBD500485F51 /* Wumuriro Watch AppTests */,
+			);
+			name = "Wumuriro Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Wumuriro Watch AppTests";
+			productReference = CB6F099E2D7DEBD500485F51 /* Wumuriro Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB6F09A72D7DEBD500485F51 /* Wumuriro Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6F09BC2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch AppUITests" */;
+			buildPhases = (
+				CB6F09A42D7DEBD500485F51 /* Sources */,
+				CB6F09A52D7DEBD500485F51 /* Frameworks */,
+				CB6F09A62D7DEBD500485F51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB6F09AA2D7DEBD500485F51 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CB6F09AB2D7DEBD500485F51 /* Wumuriro Watch AppUITests */,
+			);
+			name = "Wumuriro Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Wumuriro Watch AppUITests";
+			productReference = CB6F09A82D7DEBD500485F51 /* Wumuriro Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +352,17 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = CB5FB7942D7D15140056333F;
 					};
+					CB6F098E2D7DEBD400485F51 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					CB6F099D2D7DEBD500485F51 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = CB6F098E2D7DEBD400485F51;
+					};
+					CB6F09A72D7DEBD500485F51 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = CB6F098E2D7DEBD400485F51;
+					};
 				};
 			};
 			buildConfigurationList = CB5FB7902D7D15140056333F /* Build configuration list for PBXProject "Umuriro" */;
@@ -203,6 +382,9 @@
 				CB5FB7942D7D15140056333F /* Umuriro */,
 				CB5FB7A62D7D15150056333F /* UmuriroTests */,
 				CB5FB7B02D7D15150056333F /* UmuriroUITests */,
+				CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */,
+				CB6F099D2D7DEBD500485F51 /* Wumuriro Watch AppTests */,
+				CB6F09A72D7DEBD500485F51 /* Wumuriro Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +405,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CB5FB7AF2D7D15150056333F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F098D2D7DEBD400485F51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F099C2D7DEBD500485F51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F09A62D7DEBD500485F51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +456,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB6F098B2D7DEBD400485F51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F099A2D7DEBD500485F51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6F09A42D7DEBD500485F51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +489,21 @@
 			isa = PBXTargetDependency;
 			target = CB5FB7942D7D15140056333F /* Umuriro */;
 			targetProxy = CB5FB7B22D7D15150056333F /* PBXContainerItemProxy */;
+		};
+		CB6F09A02D7DEBD500485F51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */;
+			targetProxy = CB6F099F2D7DEBD500485F51 /* PBXContainerItemProxy */;
+		};
+		CB6F09AA2D7DEBD500485F51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */;
+			targetProxy = CB6F09A92D7DEBD500485F51 /* PBXContainerItemProxy */;
+		};
+		CB6F09B12D7DEBD500485F51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */;
+			targetProxy = CB6F09B02D7DEBD500485F51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -532,6 +771,144 @@
 			};
 			name = Release;
 		};
+		CB6F09B42D7DEBD500485F51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Wumuriro Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Wumuriro;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.cedricbahirwe.Umuriro;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Umuriro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		CB6F09B52D7DEBD500485F51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Wumuriro Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Wumuriro;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.cedricbahirwe.Umuriro;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cedricbahirwe.Umuriro.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		CB6F09B62D7DEBD500485F51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cedricbahirwe.Wumuriro-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wumuriro Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wumuriro Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		CB6F09B72D7DEBD500485F51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cedricbahirwe.Wumuriro-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wumuriro Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wumuriro Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		CB6F09B82D7DEBD500485F51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cedricbahirwe.Wumuriro-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Wumuriro Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		CB6F09B92D7DEBD500485F51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6V9B6LUW22;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cedricbahirwe.Wumuriro-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Wumuriro Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -567,6 +944,33 @@
 			buildConfigurations = (
 				CB5FB7C22D7D15150056333F /* Debug */,
 				CB5FB7C32D7D15150056333F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6F09BA2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6F09B42D7DEBD500485F51 /* Debug */,
+				CB6F09B52D7DEBD500485F51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6F09BB2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6F09B62D7DEBD500485F51 /* Debug */,
+				CB6F09B72D7DEBD500485F51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6F09BC2D7DEBD500485F51 /* Build configuration list for PBXNativeTarget "Wumuriro Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6F09B82D7DEBD500485F51 /* Debug */,
+				CB6F09B92D7DEBD500485F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

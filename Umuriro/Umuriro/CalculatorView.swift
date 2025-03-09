@@ -8,7 +8,11 @@
 import SwiftUI
 
 enum Constants {
+#if os(watchOS)
+    static let gridItemSpacing: CGFloat = 4
+#else
     static let gridItemSpacing: CGFloat = 16
+#endif
     static let deleteButton = "X"
     static let conversionRate: Double = 294.117647059
 }
@@ -171,71 +175,100 @@ struct CalculatorView: View {
         count: 3
     )
 
+    var isWatchOS: Bool {
+#if os(watchOS)
+        return true
+#else
+        return false
+#endif
+    }
+
+#if os(watchOS)
+    @State private var showResult = false
+#else
+    private let showResult = true
+#endif
+
+    var converionSwitchBtn: some View {
+        Button {
+            conversion.switchType()
+        } label: {
+            Label("Switch Converion", systemImage: "arrow.up.arrow.down")
+                .labelStyle(.iconOnly)
+                .font(.system(size: 24, weight: .bold))
+                .foregroundStyle(Color.accentColor)
+        }
+        .buttonStyle(.plain)
+    }
+
     var body: some View {
         VStack {
-
-            Text("1 RWF = \((1/Constants.conversionRate).formatted(.number.precision(.fractionLength(...6)))) Kwh")
-                .fontWeight(.semibold)
-                .foregroundStyle(.accent)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.accentColor.opacity(0.2))
-                .clipShape(.rect(cornerRadius: 6))
-                .frame(maxWidth: .infinity, alignment: .leading)
+            if !isWatchOS {
+                ConversionRateLabel()
+            }
 
             HStack {
-                Button {
-                    conversion.switchType()
-                } label: {
-                    Label("Switch Converion", systemImage: "arrow.up.arrow.down")
-                        .labelStyle(.iconOnly)
-                        .font(.system(size: 24, weight: .bold))
-                        .foregroundStyle(.accent)
+                if !isWatchOS {
+                    converionSwitchBtn
                 }
 
                 VStack(alignment: .trailing) {
-                    HStack(alignment: .center) {
-                        Text(conversion.rwf, format: .number)
+                    if !isWatchOS || !showResult {
+                        HStack(alignment: .center) {
+                            Text(conversion.rwf, format: .number)
+                                .font(.system(size: isWatchOS ? 30 : 60, weight: .bold))
+                                .minimumScaleFactor(0.5)
+                                .foregroundStyle(conversion.type == .rwfToKWh ? .primary : .secondary)
+
+
+                            UnitLabel("RWF")
+                        }
+#if !os(watchOS)
+                        .frame(height: 100)
+                        .onTapGesture {
+                            conversion.setType(.rwfToKWh)
+                        }
+#endif
+                    }
+
+                    if !isWatchOS {
+                        Color.gray
+                            .frame(height: 1)
+                    }
+
+                    if !isWatchOS || showResult {
+                        HStack(alignment: .center) {
+                            Group {
+                                Text(
+                                    conversion.kWh,
+                                    format: .number
+                                )
+
+                                if let lastDot = conversion.kWhInputString.last, lastDot == "." {
+                                    Text(conversion.kWhInputString.last == "." ? "." : "")
+                                }
+                            }
                             .font(.system(size: 60, weight: .bold))
                             .minimumScaleFactor(0.5)
-                            .foregroundStyle(conversion.type == .rwfToKWh ? .primary : .secondary)
+                            .foregroundStyle((isWatchOS || conversion.type == .kWhToRwf) ? .primary : .secondary)
 
-
-                        UnitLabel("RWF")
-                    }
-                    .frame(height: 100)
-                    .onTapGesture {
-                        conversion.setType(.rwfToKWh)
-                    }
-
-                    Color.gray
-                        .frame(height: 1)
-
-                    HStack(alignment: .center) {
-                        Group {
-                            Text(
-                                conversion.kWh,
-                                format: .number
-                            )
-
-                            if let lastDot = conversion.kWhInputString.last, lastDot == "." {
-                                Text(conversion.kWhInputString.last == "." ? "." : "")
-                            }
+                            UnitLabel("Kwh")
                         }
-                        .font(.system(size: 60, weight: .bold))
-                        .minimumScaleFactor(0.5)
-                        .foregroundStyle(conversion.type == .rwfToKWh ? .secondary : .primary)
-
-                        UnitLabel("Kwh")
-                    }
-                    .frame(height: 100)
-                    .onTapGesture {
-                        conversion.setType(.kWhToRwf)
+#if !os(watchOS)
+                        .frame(height: 100)
+                        .onTapGesture {
+                            conversion.setType(.kWhToRwf)
+                        }
+#endif
                     }
 
                 }
                 .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
+#if os(watchOS)
+            .frame(maxHeight: 40, alignment: .bottom)
+#endif
 
             GeometryReader { geometry in
                 let availHeight = geometry.size.height - (3 * Constants.gridItemSpacing)
@@ -244,47 +277,89 @@ struct CalculatorView: View {
                     spacing: Constants.gridItemSpacing
                 ) {
                     ForEach(digitsPad, id: \.self) { digit in
-                        if digit.isEmpty {
-                            Text("")
-                        } else if digit == Constants.deleteButton {
+                        if digit == Constants.deleteButton {
                             Button {
+#if os(watchOS)
+                                if showResult {
+                                    conversion.clearInput()
+                                    conversion.setType(.rwfToKWh)
+                                    showResult = false
+                                }
+#endif
                                 conversion.removeLastInput()
                             } label: {
                                 Label("Delete last digit", systemImage: "delete.backward")
                                     .labelStyle(.iconOnly)
-                                    .font(.system(size: 40, weight: .medium))
-                                    .padding()
+                                    .font(
+                                        .system(
+                                            size: isWatchOS ? 18 : 40,
+                                            weight: .medium
+                                        )
+                                    )
+                                    .minimumScaleFactor(0.4)
+                                    .padding(4)
                                     .frame(maxWidth: .infinity)
+#if !os(watchOS)
                                     .frame(height: availHeight / 4)
                                     .background(.black.opacity(0.85))
                                     .background(.regularMaterial)
                                     .clipShape(.circle)
+#else
+                                    .background(.gray.opacity(0.3))
+                                    .clipShape(.capsule)
+#endif
                             }
-
+                            .buttonStyle(.plain)
                         } else {
                             Button {
-                                conversion.addInput(digit)
+                                if isWatchOS && digit == "." {
+#if os(watchOS)
+                                    showResult = true
+#endif
+                                } else {
+#if os(watchOS)
+                                    if showResult {
+                                        conversion.clearInput()
+                                        conversion.setType(.rwfToKWh)
+                                        showResult = false
+                                    }
+#endif
+                                    conversion.addInput(digit)
+                                }
                             } label: {
-                                Text(digit)
-                                    .font(.system(size: 40, weight: .heavy))
-                                    .padding()
+                                Text((isWatchOS && digit == ".") ? "=" : digit)
+                                    .font(
+                                        .system(
+                                            size: isWatchOS ? 14 : 40,
+                                            weight: .heavy
+                                        )
+                                    )
+                                    .minimumScaleFactor(0.8)
+                                    .padding(4)
                                     .frame(maxWidth: .infinity)
+#if !os(watchOS)
                                     .frame(height: availHeight / 4)
                                     .background(.black.opacity(0.85))
                                     .background(.regularMaterial)
                                     .clipShape(.circle)
-
+#else
+                                    .background(
+                                        digit == "." ? Color.accentColor : Color .gray.opacity(0.3)
+                                    )
+                                    .clipShape(.capsule)
+#endif
                             }
+                            .buttonStyle(.plain)
                         }
                     }
                 }
             }
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(.black)
         .foregroundStyle(.white)
-
+        .preferredColorScheme(.light)
     }
 }
 
@@ -301,5 +376,19 @@ struct UnitLabel: View {
         Text(text)
             .font(.title3.weight(.medium))
             .foregroundStyle(.gray)
+    }
+}
+
+
+struct ConversionRateLabel: View {
+    var body: some View {
+        Text("1 RWF = \((1/Constants.conversionRate).formatted(.number.precision(.fractionLength(...6)))) Kwh")
+            .fontWeight(.semibold)
+            .foregroundStyle(Color.accentColor)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(Color.accentColor.opacity(0.2))
+            .clipShape(.rect(cornerRadius: 6))
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
