@@ -173,16 +173,15 @@ struct CalculatorView: View {
 
     var body: some View {
         VStack {
+
             Text("1 RWF = \((1/Constants.conversionRate).formatted(.number.precision(.fractionLength(...6)))) Kwh")
                 .fontWeight(.semibold)
                 .foregroundStyle(.accent)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color.accentColor.quinary)
+                .background(Color.accentColor.opacity(0.2))
                 .clipShape(.rect(cornerRadius: 6))
                 .frame(maxWidth: .infinity, alignment: .leading)
-
-//            Spacer()
 
             HStack {
                 Button {
