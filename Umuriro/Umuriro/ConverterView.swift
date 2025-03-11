@@ -50,9 +50,6 @@ struct ConverterView: View {
         .buttonStyle(.plain)
     }
 
-    var sbody: some View {
-        Color.green
-    }
     var body: some View {
         VStack {
             if !isWatchOS {

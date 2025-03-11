@@ -85,7 +85,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				CalculatorView.swift,
+				ConverterView.swift,
 			);
 			target = CB6F098E2D7DEBD400485F51 /* Wumuriro Watch App */;
 		};
