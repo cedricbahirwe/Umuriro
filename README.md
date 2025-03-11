@@ -7,7 +7,7 @@ Umuriro is a simple yet powerful app that helps users in Kigali instantly conver
 Now with **Apple Watch support**! ⌚⚡  
 
 📲 **Get it on the App Store:**  
-[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/umuriro/id6743042904)  
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/umuriro/id6743042904?platform=iphone)  
 
 ## 🎯 **Features**  
 ✅ Instantly convert RWF to kWh  
