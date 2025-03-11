@@ -25,7 +25,7 @@ struct UmuriroApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CalculatorView()
+//            CalculatorView()
         }
 //        .modelContainer(sharedModelContainer)
     }

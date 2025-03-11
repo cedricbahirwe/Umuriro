@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB6195982D803EEC002EBD2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6195972D803EEC002EBD2A /* Constants.swift */; };
+		CB6195992D803EFB002EBD2A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6195972D803EEC002EBD2A /* Constants.swift */; };
+		CB61959E2D803F18002EBD2A /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61959D2D803F18002EBD2A /* Conversion.swift */; };
+		CB61959F2D803F18002EBD2A /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61959D2D803F18002EBD2A /* Conversion.swift */; };
+		CB6195A12D803F25002EBD2A /* ConversionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6195A02D803F25002EBD2A /* ConversionType.swift */; };
+		CB6195A22D803F25002EBD2A /* ConversionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6195A02D803F25002EBD2A /* ConversionType.swift */; };
 		CB6F09B22D7DEBD500485F51 /* Wumuriro Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -66,6 +72,9 @@
 		CB5FB7952D7D15140056333F /* Umuriro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umuriro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5FB7A72D7D15150056333F /* UmuriroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmuriroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5FB7B12D7D15150056333F /* UmuriroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UmuriroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6195972D803EEC002EBD2A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CB61959D2D803F18002EBD2A /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
+		CB6195A02D803F25002EBD2A /* ConversionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionType.swift; sourceTree = "<group>"; };
 		CB6F098F2D7DEBD400485F51 /* Wumuriro Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wumuriro Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6F099E2D7DEBD500485F51 /* Wumuriro Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wumuriro Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6F09A82D7DEBD500485F51 /* Wumuriro Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wumuriro Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +176,7 @@
 		CB5FB78C2D7D15140056333F = {
 			isa = PBXGroup;
 			children = (
+				CB6195962D803ED0002EBD2A /* Shared */,
 				CB5FB7972D7D15140056333F /* Umuriro */,
 				CB5FB7AA2D7D15150056333F /* UmuriroTests */,
 				CB5FB7B42D7D15150056333F /* UmuriroUITests */,
@@ -188,6 +198,16 @@
 				CB6F09A82D7DEBD500485F51 /* Wumuriro Watch AppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CB6195962D803ED0002EBD2A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CB6195972D803EEC002EBD2A /* Constants.swift */,
+				CB61959D2D803F18002EBD2A /* Conversion.swift */,
+				CB6195A02D803F25002EBD2A /* ConversionType.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +459,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6195982D803EEC002EBD2A /* Constants.swift in Sources */,
+				CB61959F2D803F18002EBD2A /* Conversion.swift in Sources */,
+				CB6195A12D803F25002EBD2A /* ConversionType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +483,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6195A22D803F25002EBD2A /* ConversionType.swift in Sources */,
+				CB61959E2D803F18002EBD2A /* Conversion.swift in Sources */,
+				CB6195992D803EFB002EBD2A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,7 +823,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -827,7 +853,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
