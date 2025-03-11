@@ -12,8 +12,6 @@ struct UmuriroApp: App {
     var body: some Scene {
         WindowGroup {
             ConverterView()
-                .preferredColorScheme(.dark)
-
         }
     }
 }
