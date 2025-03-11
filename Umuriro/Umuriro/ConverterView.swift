@@ -1,5 +1,5 @@
 //
-//  CalculatorView.swift
+//  ConverterView.swift
 //  Umuriro
 //
 //  Created by Cédric Bahirwe on 09/03/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalculatorView: View {
+struct ConverterView: View {
     @State private var conversion = Conversion()
     let digitsPad = [
         "7", "8", "9",
@@ -220,7 +220,7 @@ struct CalculatorView: View {
 }
 
 #Preview {
-    CalculatorView()
+    ConverterView()
 }
 
 struct UnitLabel: View {
