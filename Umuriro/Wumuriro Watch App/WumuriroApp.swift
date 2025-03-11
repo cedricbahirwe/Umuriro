@@ -11,7 +11,7 @@ import SwiftUI
 struct Wumuriro_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            CalculatorView()
+            ConverterView()
         }
     }
 }
