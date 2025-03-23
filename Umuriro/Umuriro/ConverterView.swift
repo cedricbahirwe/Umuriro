@@ -38,11 +38,11 @@ struct ConverterView: View {
     private let showResult = true
 #endif
 
-    var converionSwitchBtn: some View {
+    var conversionSwitchBtn: some View {
         Button {
             conversion.switchType()
         } label: {
-            Label("Switch Converion", systemImage: "arrow.up.arrow.down")
+            Label("Switch Conversion", systemImage: "arrow.up.arrow.down")
                 .labelStyle(.iconOnly)
                 .font(.system(size: 24, weight: .bold))
                 .foregroundStyle(Color.accentColor)
@@ -58,7 +58,7 @@ struct ConverterView: View {
 
             HStack {
                 if !isWatchOS {
-                    converionSwitchBtn
+                    conversionSwitchBtn
                 }
 
                 VStack(alignment: .trailing) {
@@ -68,7 +68,6 @@ struct ConverterView: View {
                                 .font(.system(size: isWatchOS ? 26 : 60, weight: .bold))
                                 .minimumScaleFactor(0.2)
                                 .foregroundStyle(conversion.type == .rwfToKWh ? .primary : .secondary)
-
 
                             UnitLabel("RWF")
                         }
@@ -92,10 +91,7 @@ struct ConverterView: View {
                                     conversion.kWh,
                                     format: .number
                                 )
-
-                                if let lastDot = conversion.kWhInputString.last, lastDot == "." {
-                                    Text(conversion.kWhInputString.last == "." ? "." : "")
-                                }
+								Text(conversion.kWhInputString.last == "." ? "." : "")
                             }
                             .font(.system(size: isWatchOS ? 26 : 60, weight: .bold))
                             .minimumScaleFactor(0.2)
@@ -110,7 +106,6 @@ struct ConverterView: View {
                         }
 #endif
                     }
-
                 }
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .trailing)
@@ -123,7 +118,7 @@ struct ConverterView: View {
             GeometryReader { geometry in
 #if !os(watchOS)
                 let availHeight = geometry.size.height - (3 * Constants.gridItemSpacing)
-                #endif
+#endif
                 LazyVGrid(
                     columns: columns,
                     spacing: Constants.gridItemSpacing
@@ -235,7 +230,6 @@ struct UnitLabel: View {
             .foregroundStyle(.gray)
     }
 }
-
 
 struct ConversionRateLabel: View {
     var body: some View {
