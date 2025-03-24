@@ -129,7 +129,14 @@ struct Conversion {
         return Double(rwf) / Constants.conversionRate
     }
 
-    func calculateKWhToRWF() -> Int {
+    mutating func calculateKWhToRWF() -> Int {
+        let result = kWh * Constants.conversionRate
+        if result > Double(Int.max) {
+            // Reset values
+            kWh = 0
+            kWhInputString = "0"
+            return 0
+        }
         return Int(kWh * Constants.conversionRate)
     }
 
